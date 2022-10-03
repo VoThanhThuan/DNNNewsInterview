@@ -29,7 +29,7 @@ Hệ thống sử dụng các công cụ và ngôn ngữ như:
 - Server sử dụng DotnetNuke.
 - Client sử dụng ASP.NET MVC trên nền .NET 6.
     > Thay đổi đường dẫn server tại "\client\NewsForDNN\appsettings.json" (đường dẫn này là đường dẫn của server DNN, mặc định là "http://local.dnndemo.com/DesktopModules/") 
-    - Chạy file "RunMe" trong thư mục "client" để chạy web, lưu ý phải cài đặt .NET6.
+    - Chạy file "RunMe" trong thư mục "client" để chạy web, lưu ý phải cài đặt .NET6 và thay đổi đường dẫn BaseAddress.
     - Thư mục SQL chứa 2 file script, một file là script tạo bảng và thêm dữ liệu, một file chỉ thêm dữ liệu (2 file phòng hờ trường hợp module không tự cài đặt dữ liệu được, nếu module chạy bình thường thì không cần đụng đến.)
 ## Hình Ảnh Demo
 ![Trang chủ](https://github.com/VoThanhThuan/DNNNewsInterview/blob/main/imgs/GiaoDienClient.jpg?raw=true)
