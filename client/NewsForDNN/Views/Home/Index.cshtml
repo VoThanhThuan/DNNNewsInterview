@@ -1,0 +1,156 @@
+﻿@model List<NewsModel>
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<!-- main-panel -->
+<div class="content-wrapper">
+    <div class="container">
+        @{
+            var totalItems = (int)ViewData["TotalNews"];
+            var showLastestNews = (bool)ViewData["ShowLastestNews"];
+        }
+        @if (showLastestNews && Model.Count() > 0){
+            var lengthLatestNews = Model.Count() < 4 ? Model.Count()-1 : 4;
+            var rangeLatestNews = Model.Count() < totalItems ? Model.Count() - 1 : totalItems;
+            var rnd = new Random();
+            var rangeIndex = new List<int>(Enumerable.Range(1, rangeLatestNews));
+            <div class="row" data-aos="fade-up">
+                <div class="col-xl-8 stretch-card grid-margin">
+                <div class="position-relative">
+                    <img
+                src="@Html.Raw(NewsForDNN.Libs.ImageService.GetFirstImage(Model[0].ItemContent))"
+                alt="banner"
+                class="img-fluid"/>
+                    <div class="banner-content" style="background: #0000008a;">
+                    <div class="badge badge-danger fs-12 font-weight-bold mb-3">
+                        TIN MỚI
+                    </div>
+                    <h1 class="mb-2">
+                        <a href="/Detail/@Model[0].ItemId" class="text-white">@Model[0].ItemName</a>
+                    </h1>
+                    <div class="fs-12">
+                        <span class="mr-2"></span>@Model[0].CreatedOnDate.ToShortTimeString()
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-xl-4 stretch-card grid-margin">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h2>Tin mới</h2>
+                            @for (var i = 1; i < lengthLatestNews; i++)
+                            {
+                                var indexRnd = rnd.Next(0, rangeLatestNews);
+                                var index = rangeIndex[indexRnd];
+                                rangeIndex.RemoveAt(indexRnd);
+                                rangeLatestNews--;
+                                <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
+                                    <div class="pr-3">
+                                        <h5><a href="/Detail/@Model[index].ItemId" class="text-white">@Model[index].ItemName</a></h5>
+                                    <div class="fs-12">
+                                        <span class="mr-2">@Model[index].CreatedOnDate.ToShortTimeString()</span>
+                                    </div>
+                                    </div>
+                                    <div class="rotate-img">
+                                    <img
+                            src="@Html.Raw(NewsForDNN.Libs.ImageService.GetFirstImage(Model[index].ItemContent))"
+                            alt="thumb"
+                            class="img-fluid img-lg"/>
+                                    </div>
+                                </div>
+
+                            }
+                    </div>
+                </div>
+                </div>
+            </div>
+        }
+
+        <div class="row" data-aos="fade-up">
+            <div class="col-lg-3 stretch-card grid-margin">
+                <div style="width:100%">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Thể loại</h2>
+                            @{
+                                var categories = ViewData["Categories"] as List<CategoryModel>;
+                            }
+                            <ul class="vertical-menu">
+                                @foreach (var item in categories)
+                                {
+                                        <li><a class="list-category" data-code="@item.ItemId" href="/?category=@item.ItemId">@item.ItemName</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 stretch-card grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        @foreach (var item in Model)
+                        {
+                            <div class="row">
+                                <div class="col-sm-4 grid-margin">
+                                <div class="position-relative">
+                                    <div class="rotate-img">
+                                        <img src="@Html.Raw(NewsForDNN.Libs.ImageService.GetFirstImage(item.ItemContent))"
+                                    alt="thumb"
+                                    class="img-fluid"
+                                    style="height:200px; min-width:220px; object-fit: cover;"/>
+                                        </div>
+                                    <div class="badge-positioned">
+                                    @*                                    <span class="badge badge-danger font-weight-bold">Tin mới</span>*@                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-sm-8  grid-margin">
+                                <h2 class="mb-2 font-weight-600">
+                                    <a href="/Detail/@item.ItemId" class="text-decoration-none">
+                                    @item.ItemName
+                                    </a>
+                                </h2>
+                                <div class="fs-13 mb-2">
+                                    <span class="mr-2">@item.CreatedOnDate.ToShortDateString()</span>
+                                </div>
+                                        <p class="mb-0 crop-text-3">@item.ItemDescription</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div id="pagination" class="tui-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
+<script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
+<script>
+    @{
+        var take = (int)ViewData["Take"];
+        var page = (int)ViewData[index: "Page"];
+    }
+    var pagination = new tui.Pagination('pagination', {
+        totalItems: @totalItems,
+        itemsPerPage: @take,
+        visiblePages: 5,
+        centerAlign: true,
+        page: @(page)
+    });
+    pagination.on('afterMove', function(eventData) {
+        if(window.location.href.indexOf("?category") > -1 || window.location.href.indexOf("/Search?k=") > -1){
+            if(window.location.href.indexOf("&page=") > -1){
+                let href = new URL(window.location.href);
+                href.searchParams.set('page', eventData.page);
+                window.location.href = href.toString();
+            }else{
+                window.location.href = `${window.location.href}&page=${eventData.page}`
+            }
+        }else{
+            window.location.href = `?page=${eventData.page}`
+        }
+    });
+</script>
+<!-- main-panel ends -->
+

@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NewsForDNN</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NewsForDNN.styles.css" asp-append-version="true" />
+        <!-- plugin css for this page -->
+    <link rel="stylesheet" href="/vendors/mdi/css/materialdesignicons.min.css"/>
+    <link rel="stylesheet" href="/vendors/aos/dist/aos.css/aos.css" />
+
+    <!-- End plugin css for this page -->
+    @*    <link rel="shortcut icon" href="/images/favicon.png" />*@
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+</head>
+<body>
+    <header id="header">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <div class="navbar-top">
+                <div class="d-flex justify-content-between align-items-center">
+                  <ul class="navbar-top-left-menu">
+                    <li class="nav-item">
+                      <a href="/" class="nav-link d-flex align-items-center">
+                          <img src="/imgs/LogoLaptop.png" alt="LOGO" style="width:64px; height:64px;"/>
+                          <h1 class="m-0">NewsDNN</h1>
+                      </a>
+                    </li>
+
+                  </ul>
+                  <ul class="navbar-top-right-menu">
+                    <li class="nav-item">
+                        <form action="/Home/Search" method="get">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm..." aria-label="search" name="k">
+                                <button class="btn btn-primary" type="submit" id="button-addon2"><i class="mdi mdi-magnify"></i></button>
+                            </div> 
+                        </form>                 
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="navbar-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <button
+                      class="navbar-toggler"
+                      type="button"
+                      data-target="#navbarSupportedContent"
+                      aria-controls="navbarSupportedContent"
+                      aria-expanded="false"
+                      aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div
+                      class="navbar-collapse justify-content-center collapse"
+                      id="navbarSupportedContent">
+                      <ul class="navbar-nav d-lg-flex justify-content-between align-items-center">
+                        <li>
+                          <button class="navbar-close">
+                            <i class="mdi mdi-close"></i>
+                          </button>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/">TRANG CHỦ</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/Home/SmartCalculator">MÁY TÍNH TUỔI THÔNG MINH</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="https://vothanhthuan.github.io/vtt/">LIÊN HỆ</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <ul class="social-media">
+                    <li>
+                      <a href="https://www.facebook.com/vothuan1407/">
+                        <i class="mdi mdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://github.com/vothanhthuan">
+                        <i class="mdi mdi-github-circle"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
+<!-- main-panel -->
+        <div class="content-wrapper pt-1">
+          <div class="container">
+            @RenderBody()
+          </div>
+        </div>
+        <footer>
+          <div class="footer-top">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-5">
+                  <h3 class="font-weight-bold mb-3">THÔNG TIN</h3>
+                  <h5 class="font-weight-normal mb-5">
+                    Trang web này là bài kiếm của Võ Thành Thuận khi phỏng vấn SoftZ.
+                  </h5>
+                  <h5>
+                    Mọi thông tin về trang web xin hãy liên hệ tôi qua facebook.
+                  </h5>
+                  <h5>
+                    Dưới đây là Facebook và github của tôi.
+                  </h5>
+                  <ul class="social-media mb-3">
+                    <li>
+                      <a href="https://www.facebook.com/vothuan1407/">
+                        <i class="mdi mdi-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://vothanhthuan.github.io/vtt/about/vtt.html">
+                        <i class="mdi mdi-account-card-details"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://github.com/vothanhthuan">
+                        <i class="mdi mdi-github-circle"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-sm-4">
+                  <h3 class="font-weight-bold mb-3">TÍNH NĂNG THÚ VỊ</h3>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="footer-border-bottom pb-2">
+                        <div class="row">
+                          <div class="col-9">
+                              <a href="/"  class="text-white">           
+                                <h5 class="font-weight-600">
+                                  Thuật toán tải và sử lý dữ liệu giúp làm mới trang web.
+                                </h5>
+                              </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="footer-border-bottom pb-2">
+                        <div class="row">
+                          <div class="col-9">
+                              <a href="/"  class="text-white">           
+                                <h5 class="font-weight-600">
+                                  Máy tính tuổi thông minh.
+                                </h5>
+                              </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <h3 class="font-weight-bold mb-3">CÔNG NGHỆ & THƯ VIỆN</h3>
+                  <div class="footer-border-bottom pb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600">.NET 6</h5>
+                    </div>
+                  </div>
+                  <div class="footer-border-bottom pb-2 pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600">ASP.NET MVC</h5>
+                    </div>
+                  </div>
+                  <div class="footer-border-bottom pb-2 pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600">Bootstrap 5</h5>
+                    </div>
+                  </div>
+                  <div class="footer-border-bottom pb-2 pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600">tui.pagination</h5>
+                    </div>
+                  </div>
+                  <div class="pt-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 font-weight-600">Material Design Icons</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="d-sm-flex justify-content-between align-items-center">
+                    <div class="fs-14 font-weight-600">
+                      <span>Đừng ấn cái nút này: </span>
+                      <button id="clickMePlease" class="btn btn-light">Hãy ấn tôi!</button>
+                    </div>
+                    <div class="fs-14 font-weight-600">
+                      Võ Thành Thuận
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+    <!--my js-->
+    <script src="/js/vtt.js"></script>
+    <!--end my js-->
+    <!-- inject:js -->
+    <script src="/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script src="/vendors/aos/dist/aos.js/aos.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="/js/demo.js"></script>
+    <script src="/js/jquery.easeScroll.js"></script>
+    <!-- End custom js for this page-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

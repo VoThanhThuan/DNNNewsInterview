@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "SmartCalculator";
+}
+<div class="content-wrapper">
+    <div class="row" data-aos="fade-up">
+        <div>
+            <div class="form-floating mb-3">
+                 <input type="text" class="form-control" id="inputAge" placeholder="Nhập số tuổi của bạn">
+                 <label for="inputAge">Nhập số tuổi của bạn</label>
+            </div>
+            <button id="btnAge" type="button" class="btn btn-primary">Tính tuổi</button>
+        </div>
+        <div class="mt-1">
+            <span class="text-danger" id="ageResult"></span>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <script>
+        smartCalculator();
+    </script>
+}
+

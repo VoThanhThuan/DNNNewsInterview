@@ -1,0 +1,76 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<NewsCategories.Modules.DNNNewsCategories.Models.Item>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div style="display:flex">
+    <div style="display:flex">
+        <input type="text" class="form-control" placeholder="Tìm kiếm..." aria-label="search" name="k" style="border-radius: 0">
+        <span id="btnIconSearch" class="search-toggle-icon" style="position:initial"></span>
+        <button id="btnSearchNews" hidden type="submit" id="button-addon2" style="position:absolute; border-radius:0"></button>
+    </div>
+</div>
+
+<div id="Items-@Dnn.ModuleContext.ModuleId">
+    @if (Model.Count() == 0)
+    {
+        <p>@Dnn.LocalizeString("NoItems")</p>
+    }
+    else
+    {
+        <ul class="tm_tl">
+            @foreach (var item in Model)
+            {
+                <li class="tm_t">
+                    <h3>@item.ItemName</h3>
+                    <div class="tm_td">@item.ItemDescription</div>
+                    @{
+                        if (Dnn.ModuleContext.IsEditable)
+                        {
+                            <div>
+                                <a href="@Url.Action("Edit", "Item", new {ctl = "Edit", itemId = item.ItemId})">@Dnn.LocalizeString("EditItem")</a>
+                                <a href="@Url.Action("Delete", "Item", new {itemId = item.ItemId})">@Dnn.LocalizeString("DeleteItem")</a>
+                            </div>
+                        }
+                    }
+                </li>
+            }
+        </ul>
+    }
+</div>
+<div id="pagination" class="tui-pagination"></div>
+
+<script>
+    document.querySelector("#btnIconSearch").addEventListener("click", () => {
+        document.querySelector("#btnSearchNews").click();
+    })
+</script>
+<link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
+<script src="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.js"></script>
+<script>
+    @{
+        var totalItems = (int)ViewData["TotalNews"];
+        var take = (int)ViewData["Take"];
+        var page = (int)ViewData["Page"];
+    }
+    var pagination = new tui.Pagination('pagination', {
+        totalItems: @totalItems,
+        itemsPerPage: @take,
+        visiblePages: 5,
+        centerAlign: true,
+        page: @(page)
+    });
+    pagination.on('afterMove', function(eventData) {
+        if(window.location.href.indexOf("?category") > -1 || window.location.href.indexOf("/Search?k=") > -1){
+            if(window.location.href.indexOf("&page=") > -1){
+                let href = new URL(window.location.href);
+                href.searchParams.set('page', eventData.page);
+                window.location.href = href.toString();
+            }else{
+                window.location.href = `${window.location.href}&page=${eventData.page}`
+            }
+        }else{
+            window.location.href = `?page=${eventData.page}`
+        }
+    });
+</script>

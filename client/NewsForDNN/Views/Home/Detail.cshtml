@@ -1,0 +1,33 @@
+﻿@model NewsModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+<style>
+    .content-news img{
+        max-width: 100%;
+        margin: auto;
+    }
+</style>
+<div class="content-wrapper">
+    <div class="row" data-aos="fade-up">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="fw-bold">@Model.ItemName</h1>
+                <h5>@Model.CreatedOnDate.ToShortDateString()</h5>
+                <span class="fw-bold">@Model.ItemDescription</span>
+                <div class="content-news"ss style="width:100%">
+                    @Html.Raw(Model.ItemContent)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3" data-aos="fade-up">
+        <div class="card">
+            <div class="card-body">
+                <div class="fb-comments" data-href="https://vothanhthuan.github.io/vtt/" data-width="100%" data-numposts="5" data-colorscheme="dark"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1050071089127677&autoLogAppEvents=1" nonce="JBdYwGab"></script>

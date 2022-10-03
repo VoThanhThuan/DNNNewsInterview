@@ -1,0 +1,134 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<DNNNews.Modules.DNNNews.Models.Item>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Item-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight "><a href="#">@Dnn.LocalizeString("ExpandAll")</a></div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div><label for="itemName">@Dnn.LocalizeString("lblName")</label></div>
+                @Html.TextBoxFor(m => m.ItemName)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="itemDescription">@Dnn.LocalizeString("lblDescription")</label></div>
+                @Html.TextArea("itemDescription", Model.ItemDescription)
+            </div>
+
+            <div class="dnnFormItem">
+                <div><label for="NewsCategoriesId">Thể Loại</label></div>
+                <select id="NewsCategoriesId" name="NewsCategoriesId">
+                </select>
+            </div>
+            @*<div class="dnnFormItem">
+                <div><label for="itemUser">@Dnn.LocalizeString("lblAssignedUser")</label></div>
+                @Html.DropDownListFor(m => m.AssignedUserId, (IEnumerable<SelectListItem>)ViewBag.Users, "Choose...")
+            </div>*@
+            <div class="dnnFormItem">
+                <div><label for="ItemContent">@Dnn.LocalizeString("lblContent")</label></div>
+                @Html.TextArea("ItemContent", Model.ItemContent)
+            </div>
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+    <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
+    <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
+</div>
+
+@*Nay la CKEditor*@
+<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#ItemContent'), {
+            toolbar: {
+                items: [
+                    'undo',
+                    'redo',
+                    '|',
+                    'fontColor',
+                    'highlight',
+                    '|',
+                    'bold',
+                    'underline',
+                    'italic',
+                    'subscript',
+                    'superscript',
+                    'removeFormat',
+                    '|',
+                    'alignment',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'link',
+                    'codeBlock',
+                    'imageInsert',
+                    'insertTable',
+                    'mediaEmbed',
+                    'CKFinder'
+                ]
+            },
+            language: 'vi',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:full',
+                    'imageStyle:side',
+                    'linkImage'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells',
+                    'tableCellProperties',
+                    'tableProperties'
+                ]
+            },
+            licenseKey: '',
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({ expandText: '@Dnn.LocalizeString("ExpandAll")', collapseText: '@Dnn.LocalizeString("CollapseAll")', targetArea: '#dnnEditBasicSettings' });
+        }
+
+        $(function() {
+            $('#cancelEdit').click(function() { dnnModal.closePopUp(false); });
+            dnnEditBasicSettings();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+                dnnEditBasicSettings();
+            });
+        });
+
+    }(jQuery, window.Sys));
+    //Code cua Thuan :))))
+    var host = window.location.origin;
+    fetch(`${host}/DesktopModules/DNNNewsCategories/api/NewsCategories/GetCategories`)
+        .then((response) => response.json())
+        .then((data) => {
+            var provinces = document.getElementById('NewsCategoriesId');
+            data.forEach(element => {
+                let option = document.createElement('option');
+                option.value = element.ItemId;
+                option.innerHTML = element.ItemName;
+                option.setAttribute('ModuleId', element.ModuleId);
+                provinces.appendChild(option);
+            })
+        });
+</script>

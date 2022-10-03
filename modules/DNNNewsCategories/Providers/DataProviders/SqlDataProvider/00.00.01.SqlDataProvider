@@ -1,0 +1,56 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}DNNNewsCategories]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}DNNNewsCategories]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}DNNNewsCategories
+    (
+    ItemId int NOT NULL IDENTITY (1, 1),
+    ItemName nvarchar(MAX) NOT NULL,
+    ItemDescription nvarchar(MAX) NOT NULL,
+    AssignedUserId int NULL,
+    ModuleId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    LastModifiedByUserId int NOT NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+ALTER TABLE {databaseOwner}{objectQualifier}DNNNewsCategories ADD CONSTRAINT
+    PK_{objectQualifier}DNNNewsCategories PRIMARY KEY CLUSTERED 
+    (
+    ItemId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+GO
+SET IDENTITY_INSERT [dbo].[DNNNewsCategories] ON 
+
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (1, N'Tin Mới', N'Tin tức mới trong ngày', 0, 381, CAST(N'2022-09-27T16:01:21.310' AS DateTime), 1, CAST(N'2022-09-27T16:02:17.783' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (2, N'Tin Hot', N'Tin tức đang hot', 0, 381, CAST(N'2022-09-27T16:02:09.917' AS DateTime), 1, CAST(N'2022-09-27T16:02:09.917' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (3, N'Thế Giới', N'Tin thế Giới', 0, 381, CAST(N'2022-09-28T03:32:47.360' AS DateTime), 1, CAST(N'2022-09-28T03:32:47.360' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (4, N'Thời Sự', N'Thời Sự', 0, 381, CAST(N'2022-09-28T08:07:21.227' AS DateTime), 1, CAST(N'2022-09-28T08:07:21.227' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (5, N'Đời Sống', N'Đời Sống', 0, 381, CAST(N'2022-09-28T08:07:34.797' AS DateTime), 1, CAST(N'2022-09-28T08:07:34.797' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (6, N'Du Lịch', N'Du Lịch', 0, 381, CAST(N'2022-09-28T08:07:53.893' AS DateTime), 1, CAST(N'2022-09-28T08:07:53.893' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (7, N'Thể Thao', N'Thể Thao', 0, 381, CAST(N'2022-09-28T08:08:07.920' AS DateTime), 1, CAST(N'2022-09-28T08:08:07.920' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (8, N'Sức Khỏe', N'Sức Khỏe', 0, 381, CAST(N'2022-09-28T08:08:15.987' AS DateTime), 1, CAST(N'2022-09-28T08:08:15.987' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (9, N'Pháp Luật', N'Pháp Luật', 0, 381, CAST(N'2022-09-28T08:09:06.493' AS DateTime), 1, CAST(N'2022-09-28T08:09:06.493' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (10, N'Giáo Dục', N'Giáo Dục', 0, 381, CAST(N'2022-09-28T08:10:45.373' AS DateTime), 1, CAST(N'2022-09-28T08:10:45.373' AS DateTime), 1)
+INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] ([ItemId], [ItemName], [ItemDescription], [AssignedUserId], [ModuleId], [CreatedOnDate], [CreatedByUserId], [LastModifiedOnDate], [LastModifiedByUserId]) VALUES (12, N'Công nghệ', N'Công nghệ', 0, 381, CAST(N'2022-09-29T09:29:15.400' AS DateTime), 1, CAST(N'2022-09-29T09:29:15.400' AS DateTime), 1)
+SET IDENTITY_INSERT {databaseOwner}{objectQualifier}[DNNNewsCategories] OFF
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

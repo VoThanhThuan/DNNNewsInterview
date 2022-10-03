@@ -1,0 +1,10 @@
+E:\DNN\DNN_Platform_9.10.2_Install\bin\DNNNewsCategories.dll.config
+E:\DNN\DNN_Platform_9.10.2_Install\bin\DNNNewsCategories.dll
+E:\DNN\DNN_Platform_9.10.2_Install\bin\DNNNewsCategories.pdb
+E:\DNN\DNN_Platform_9.10.2_Install\DesktopModules\MVC\DNNNewsCategories\obj\Debug\DNNNewsCategories.csproj.AssemblyReference.cache
+E:\DNN\DNN_Platform_9.10.2_Install\DesktopModules\MVC\DNNNewsCategories\obj\Debug\NewsCategories.Modules.DNNNewsCategories.App_LocalResources.Settings.resources
+E:\DNN\DNN_Platform_9.10.2_Install\DesktopModules\MVC\DNNNewsCategories\obj\Debug\DNNNewsCategories.csproj.GenerateResource.cache
+E:\DNN\DNN_Platform_9.10.2_Install\DesktopModules\MVC\DNNNewsCategories\obj\Debug\DNNNewsCategories.csproj.CoreCompileInputs.cache
+E:\DNN\DNN_Platform_9.10.2_Install\DesktopModules\MVC\DNNNewsCategories\obj\Debug\DNNNewsCategories.csproj.CopyComplete
+E:\DNN\DNN_Platform_9.10.2_Install\DesktopModules\MVC\DNNNewsCategories\obj\Debug\DNNNewsCategories.dll
+E:\DNN\DNN_Platform_9.10.2_Install\DesktopModules\MVC\DNNNewsCategories\obj\Debug\DNNNewsCategories.pdb
