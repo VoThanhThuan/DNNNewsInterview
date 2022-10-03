@@ -26,5 +26,5 @@ Hệ thống sử dụng các công cụ và ngôn ngữ như:
 - [DNN](https://www.dnnsoftware.com/) - Phát triển modules cho web ("Cái này tệ, không muốn dùng.")
 
 ## Hình Ảnh Demo
-![Trang chủ](https://github.com/VoThanhThuan/WebTruyen/blob/master/image-TrangChu.jpg?raw=true)
-![Trang chi tiết](https://github.com/VoThanhThuan/WebTruyen/blob/master/imag-ChiTiet.jpg?raw=true)
+![Trang chủ](https://github.com/VoThanhThuan/DNNNewsInterview/blob/main/imgs/GiaoDienClient.jpg?raw=true)
+![Trang chi tiết](https://github.com/VoThanhThuan/DNNNewsInterview/blob/main/imgs/GiaoDienClientDocBao.jpg?raw=true)
