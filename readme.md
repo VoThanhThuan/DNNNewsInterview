@@ -18,15 +18,15 @@
 ## Công Nghệ
 Hệ thống sử dụng các công cụ và ngôn ngữ như:
 
-- [.NET6](https://dotnet.microsoft.com/download/dotnet/6.0) - Framework .NET5.
+- [.NET6](https://dotnet.microsoft.com/download/dotnet/6.0) - Framework .NET6.
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) - IDE Editor.
 - [Visual Studio Code](https://code.visualstudio.com/) - IDE Editor.
 - [Bootstrap](https://getbootstrap.com/) - Một thư viện CSS giúp giảm thời giản phát triển UI
-- [FontAwesome](https://fontawesome.com/) - Bộ icon dùng cho việc design.
+- [Materialdesignicons](https://materialdesignicons.com/) - Bộ icon dùng cho việc design.
 - [DNN](https://www.dnnsoftware.com/) - Phát triển modules cho web ("Cái này tệ, không muốn dùng.")
 
 ## Hướng dẫn
-- Server sử dụng DotnetNuke.
+- Server sử dụng DotnetNuke (DNN).
 - Client sử dụng ASP.NET MVC trên nền .NET 6.
     > Thay đổi đường dẫn server tại "\client\NewsForDNN\appsettings.json" (đường dẫn này là đường dẫn của server DNN, mặc định là "http://local.dnndemo.com/DesktopModules/") 
     - Chạy file "RunMe" trong thư mục "client" để chạy web, lưu ý phải cài đặt .NET6 và thay đổi đường dẫn "BaseAddress" trong file "appsettings.json".
