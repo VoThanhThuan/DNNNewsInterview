@@ -21,7 +21,7 @@ Hệ thống sử dụng các công cụ và ngôn ngữ như:
 - [.NET6](https://dotnet.microsoft.com/download/dotnet/6.0) - Framework .NET6.
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) - IDE Editor.
 - [Visual Studio Code](https://code.visualstudio.com/) - IDE Editor.
-- [Bootstrap](https://getbootstrap.com/) - Một thư viện CSS giúp giảm thời giản phát triển UI
+- [Bootstrap](https://getbootstrap.com/) - Một thư viện CSS giúp giảm thời gian phát triển UI
 - [Materialdesignicons](https://materialdesignicons.com/) - Bộ icon dùng cho việc design.
 - [DNN](https://www.dnnsoftware.com/) - Phát triển modules cho web ("Cái này tệ, không muốn dùng.")
 
